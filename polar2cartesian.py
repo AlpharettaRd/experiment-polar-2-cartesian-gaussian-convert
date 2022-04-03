@@ -31,10 +31,10 @@ if __name__ == '__main__':
         exp_bear_std = np.std(data_bear)
         exp_both_std = np.std(data_both)
         exp_both_sqrt = math.sqrt(exp_dist_std ** 2 + exp_bear_std ** 2)
-        distance_with_noise = distance + distance_gauss
-        bearing_with_noise = bearing + bearing_gauss
-        cal_dist_std = distance_noise * math.cos(bearing_with_noise)
-        cal_bear_std = distance_with_noise * bearing_noise * (math.sin(bearing))
+        distance_with_noise = distance + random.gauss(0, distance_noise)
+        bearing_with_noise = bearing + random.gauss(0, bearing_noise)
+        cal_dist_std = distance_noise * math.cos(bearing)
+        cal_bear_std = distance * bearing_noise * (math.sin(bearing))
         cal_both_std = math.sqrt(cal_dist_std**2 + cal_bear_std**2)
         diff_bear_std = cal_bear_std - exp_bear_std
         diff_dist_std = cal_dist_std - exp_dist_std
