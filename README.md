@@ -76,7 +76,9 @@ The conclusion is
        exp_both_sqrt: 0.10271868071249864, diff: -6.006899042829139e-06
        exp_both_std: 0.10272468761154147, cal_both_std: 0.10320319927745643, diff: 0.00047851166591496297
    
-   The real distance noise is 0.05, then exmperiment result is 0.049951161907419696. The bearing result is similar, the real noise is 0.03, and the experimant result is 0.02995007185116088. The experiment result is close enough to the real value.
+   The real distance noise is 0.05, then exmperiment result is 0.049951161907419696. 
+   The bearing result is similar, the real noise is 0.03, and the experimant result is 0.02995007185116088. 
+   The experiment result is close enough to the real value.
    
 2. exp_both_std ≈ sqrt(exp_dist_std ** 2 + exp_bear_std ** 2)
    For this exmaple,
