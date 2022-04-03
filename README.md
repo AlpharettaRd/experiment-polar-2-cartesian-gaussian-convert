@@ -65,3 +65,44 @@ exp_dist_std: 0.050041729520331514, cal_dist_std: -0.04997733048680747, diff: -0
 exp_bear_std: 0.0050946070415422385, cal_bear_std: 2.963400919839082e-17, diff: -0.005094607041542209
 exp_both_sqrt: 0.05030039477274259, diff: 2.7462337246590696e-05
 exp_both_std: 0.050272932435496, cal_both_std: 0.04997733048680747, diff: -0.00029560194868853
+
+The conclusion is 
+1. This experiment does work for simulating noise. 
+   For this exmaple,
+       --------distance: 8.0, distance noise: 0.05, bearing: 0.39269908169872414, bearing noise: 0.03--------
+       experiment: distance noise: 0.049951161907419696, bearing noise: 0.02995007185116088
+       exp_dist_std: 0.04614885611142251, cal_dist_std: 0.04614615483095946, diff: -2.7012804630494047e-06
+       exp_bear_std: 0.09176824312867421, cal_bear_std: 0.09231160672103753, diff: 0.0005433635923633162
+       exp_both_sqrt: 0.10271868071249864, diff: -6.006899042829139e-06
+       exp_both_std: 0.10272468761154147, cal_both_std: 0.10320319927745643, diff: 0.00047851166591496297
+   
+   The real distance noise is 0.05, then exmperiment result is 0.049951161907419696. The bearing result is similar, the real noise is 0.03, and the experimant result is 0.02995007185116088. The experiment result is close enough to the real value.
+   
+2. exp_both_std ≈ sqrt(exp_dist_std ** 2 + exp_bear_std ** 2)
+   For this exmaple,
+       --------distance: 8.0, distance noise: 0.05, bearing: 0.39269908169872414, bearing noise: 0.03--------
+       experiment: distance noise: 0.049951161907419696, bearing noise: 0.02995007185116088
+       exp_dist_std: 0.04614885611142251, cal_dist_std: 0.04614615483095946, diff: -2.7012804630494047e-06
+       exp_bear_std: 0.09176824312867421, cal_bear_std: 0.09231160672103753, diff: 0.0005433635923633162
+       exp_both_sqrt: 0.10271868071249864, diff: -6.006899042829139e-06
+       exp_both_std: 0.10272468761154147, cal_both_std: 0.10320319927745643, diff: 0.00047851166591496297
+    exp_dist_std: 0.04614885611142251 (the exmperiment result of the distance with noise, the bearing has no noise.)
+    exp_bear_std: 0.09176824312867421 (the exmperiment result of the bearing with noise, the distance has no noise.)
+    exp_both_std: 0.10272468761154147 (the exmperiment result of both distance and bearing have noise.)
+    Definitely, 
+        exp_both_std != exp_dist_std + exp_bear_std, 
+    Actually, exp_both_std is close to exp_both_sqrt.
+       exp_both_sqrt = sqrt(exp_dist_std ** 2 + exp_bear_std ** 2)
+    
+3. The result of formulas are close to the experiment.
+   exp_dist_std ≈ cal_dist_std
+   exp_bear_std ≈ cal_bear_std
+   exp_both_std ≈ cal_both_std
+   
+   cal_dist_std = distance_noise * math.cos(bearing)
+   cal_bear_std = distance * bearing_noise * (math.sin(bearing))
+   cal_both_std = math.sqrt(cal_dist_std**2 + cal_bear_std**2)
+
+   
+    
+    
