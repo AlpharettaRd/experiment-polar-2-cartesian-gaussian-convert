@@ -42,7 +42,7 @@ The conclusion is
    
    cal_dist_std = distance_noise * math.cos(bearing)
    cal_bear_std = distance * math.sqrt((math.sin(bearing) ** 2)  * (bearing_noise ** 2) + ((math.cos(bearing) ** 2) * (bearing_noise ** 4) / 2.0))
-   cal_both_std = math.sqrt(cal_dist_std**2 + cal_bear_std**2)
+   cal_both_std = math.sqrt(cal_dist_std ** 2 + cal_bear_std ** 2)
 
    
     
